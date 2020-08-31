@@ -1,26 +1,35 @@
 {
-  "expo": {
-    "name": "nossa_casa",
-    "slug": "nossa_casa",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    }
-  }
+	"expo": {
+		"name": "Nossa Cassa",
+		"slug": "nossa_casa",
+		"version": "1.0.1",
+		"orientation": "landscape",
+		"icon": "./assets/icon.png",
+		"splash": {
+			"image": "./assets/splash.png",
+			"resizeMode": "contain",
+			"backgroundColor": "#e2e2e2"
+		},
+		"updates": {
+			"fallbackToCacheTimeout": 0
+		},
+		"assetBundlePatterns": [
+			"**/*"
+		],
+		"ios": {
+			"supportsTablet": true
+		},
+		"androidNavigationBar": {
+			"visible": "immersive"
+		},
+		"web": {
+			"favicon": "./assets/favicon.png"
+		},
+		"android": {
+			"package": "com.james5968.nossa_casa",
+			"versionCode": 2
+
+		},
+		"description": ""
+	}
 }

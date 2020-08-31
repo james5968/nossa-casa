@@ -1,0 +1,1 @@
+<FlatList data={orderDetails} renderItem={renderItem} keyExtractor={(item) => item.index} />
