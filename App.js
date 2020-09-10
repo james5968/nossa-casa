@@ -12,18 +12,21 @@ import Pin from 'react-native-pin-code';
 import Modal from 'react-native-modal';
 import * as firebase from 'firebase';
 
+import Theme from './theme';
+
 import Live from './src/screens/Live';
 import Completed from './src/screens/Completed';
 import Stock from './src/screens/Stock';
 import Order from './src/screens/Order';
 import HeaderButtons from './src/components/headerButtons';
 import HeaderTitle from './src/components/headerTitle';
+import theme from './theme';
 
 const HomeStack = createStackNavigator();
 
 const headerOptions = {
 	headerStyle: {
-		backgroundColor: '#C0C0C0',
+		backgroundColor: Theme.primaryMenu,
 		height: 65,
 		shadowOpacity: 0,
 		shadowColor: 'transparent',
@@ -72,12 +75,12 @@ const OrderRight = ({ route, navigation }) => {
 						fontFamily: 'DIN-Next',
 						fontSize: 30
 					}}
-					containerStyle={{ height: 250, backgroundColor: '#333' }}
-					containerPinStyle={{ height: 100, color: '#CF0A24' }}
+					containerStyle={{ height: 250, backgroundColor: Theme.secondaryDark }}
+					containerPinStyle={{ height: 100, color: Theme.primaryRed }}
 					pinStyle={{ height: 100, backgroundColor: '#ccc' }}
 					keyboardType="numeric"
 					textStyle={{
-						color: '#fff',
+						color: Theme.primaryLight,
 						fontFamily: 'DIN-Next',
 						fontSize: 25
 					}}
@@ -85,7 +88,7 @@ const OrderRight = ({ route, navigation }) => {
 					obfuscation
 					number={6}
 					code="152667"
-					selectionColor="#CF0A24"
+					selectionColor={Theme.primaryRed}
 					success={() => {
 						setRefundVisible(true);
 						setModalVisible(false);
@@ -101,7 +104,7 @@ const OrderRight = ({ route, navigation }) => {
 				/>
 				<TouchableOpacity
 					style={{
-						backgroundColor: '#CF0A24',
+						backgroundColor: Theme.primaryRed,
 						width: 700,
 						height: 80,
 						justifyContent: 'center',
@@ -114,7 +117,7 @@ const OrderRight = ({ route, navigation }) => {
 				>
 					<Text
 						style={{
-							color: '#fff',
+							color: Theme.primaryLight,
 							fontFamily: 'DIN-Next',
 							fontSize: 30
 						}}
@@ -129,7 +132,7 @@ const OrderRight = ({ route, navigation }) => {
 						style={{
 							width: 700,
 							height: 400,
-							backgroundColor: '#333',
+							backgroundColor: Theme.secondaryDark,
 							flexDirection: 'column',
 							justifyContent: 'space-between',
 							alignItems: 'center',
@@ -138,13 +141,13 @@ const OrderRight = ({ route, navigation }) => {
 					>
 						<Text
 							style={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontFamily: 'DIN-Next',
 								fontSize: 40,
 								padding: 10,
 								width: 700,
 								height: 65,
-								backgroundColor: '#C0C0C0',
+								backgroundColor: Theme.primaryMenu,
 								textAlign: 'center'
 							}}
 						>
@@ -152,7 +155,7 @@ const OrderRight = ({ route, navigation }) => {
 						</Text>
 						<TextInput
 							style={{
-								backgroundColor: '#fff',
+								backgroundColor: Theme.primaryLight,
 								width: 600,
 								fontSize: 40,
 								height: 60,
@@ -185,7 +188,7 @@ const OrderRight = ({ route, navigation }) => {
 						>
 							<Text
 								style={{
-									color: '#fff',
+									color: Theme.primaryLight,
 									fontFamily: 'DIN-Next',
 									fontSize: 30
 								}}
@@ -197,7 +200,7 @@ const OrderRight = ({ route, navigation }) => {
 
 					<TouchableOpacity
 						style={{
-							backgroundColor: '#CF0A24',
+							backgroundColor: Theme.primaryRed,
 							width: 700,
 							height: 80,
 							justifyContent: 'center',
@@ -209,7 +212,7 @@ const OrderRight = ({ route, navigation }) => {
 					>
 						<Text
 							style={{
-								color: '#fff',
+								color: Theme.primaryLight,
 								fontFamily: 'DIN-Next',
 								fontSize: 30
 							}}
@@ -222,7 +225,7 @@ const OrderRight = ({ route, navigation }) => {
 			<TouchableOpacity
 				onPress={toggleModal}
 				style={{
-					backgroundColor: '#CF0A24',
+					backgroundColor: Theme.primaryRed,
 					width: 220,
 					height: 65,
 					flexDirection: 'row',
@@ -232,7 +235,7 @@ const OrderRight = ({ route, navigation }) => {
 			>
 				<Text
 					style={{
-						color: '#fff',
+						color: Theme.primaryLight,
 						fontFamily: 'DIN-Next',
 						fontSize: 30
 					}}
@@ -245,6 +248,10 @@ const OrderRight = ({ route, navigation }) => {
 };
 
 const BackButton = ({ route, navigation }) => {
+	const [
+		global,
+		setGlobal
+	] = useGlobal();
 	return (
 		<View>
 			<TouchableOpacity
@@ -252,7 +259,7 @@ const BackButton = ({ route, navigation }) => {
 					navigation.goBack();
 				}}
 				style={{
-					backgroundColor: '#CF0A24',
+					backgroundColor: Theme.primaryRed,
 					width: 360,
 					height: 65,
 
@@ -261,10 +268,10 @@ const BackButton = ({ route, navigation }) => {
 					alignItems: 'center'
 				}}
 			>
-				<Icon style={{}} size={35} color="#fff" name="arrow-back" />
+				<Icon style={{}} size={35} color={Theme.primaryLight} name="arrow-back" />
 				<Text
 					style={{
-						color: '#fff',
+						color: Theme.primaryLight,
 						fontFamily: 'DIN-Next',
 						fontSize: 30
 					}}
@@ -278,7 +285,7 @@ const BackButton = ({ route, navigation }) => {
 
 const backOptions = ({ route, navigation }) => ({
 	headerStyle: {
-		backgroundColor: '#C0C0C0',
+		backgroundColor: Theme.primaryMenu,
 		height: 65,
 		shadowOpacity: 0,
 		shadowColor: 'transparent',
@@ -289,20 +296,6 @@ const backOptions = ({ route, navigation }) => ({
 	headerLeft: () => <BackButton route={route} navigation={navigation} />,
 	headerRight: () => <OrderRight navigation={navigation} route={route} />
 });
-
-const tabOptions = {
-	activeTintColor: '#fff',
-	inactiveTintColor: '#000',
-	activeBackgroundColor: '#CF0A24',
-	inactiveBackgroundColor: '#C0C0C0',
-	labelStyle: { fontSize: 35, fontFamily: 'DIN-Next' },
-	style: {
-		height: 65,
-		shadowOpacity: 0,
-		shadowColor: 'transparent',
-		elevation: 0
-	}
-};
 
 function LiveStackScreen() {
 	return (
@@ -338,6 +331,21 @@ export default function App() {
 		setGlobal
 	] = useGlobal();
 
+	const tabOptions = {
+		activeTintColor: Theme.primaryLight,
+		inactiveTintColor: Theme.primaryDark,
+		activeBackgroundColor: Theme.primaryRed,
+		inactiveBackgroundColor: Theme.primaryMenu,
+		labelStyle: { fontSize: 35, fontFamily: 'DIN-Next' },
+		style: {
+			height: 65,
+			shadowOpacity: 0,
+			shadowColor: 'transparent',
+			elevation: 0,
+			borderTopWidth: 0
+		}
+	};
+
 	firebase.database().ref('orders/').on('value', (snapshot) => {
 		const data = snapshot.val() ? snapshot.val() : {};
 		setGlobal((state) => ({
@@ -367,7 +375,11 @@ export default function App() {
 	}
 	return (
 		<NavigationContainer>
-			<Tab.Navigator tabBarOptions={tabOptions} initialRouteName="Live" barStyle={{ backgroundColor: '#C0C0C0' }}>
+			<Tab.Navigator
+				tabBarOptions={tabOptions}
+				initialRouteName="Live"
+				barStyle={{ backgroundColor: Theme.primaryMenu }}
+			>
 				<Tab.Screen name="Live" component={LiveStackScreen} />
 				<Tab.Screen name="Completed" component={CompletedStackScreen} />
 				<Tab.Screen name="Stock" component={StockStackScreen} />

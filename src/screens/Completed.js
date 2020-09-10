@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button, Text, View, FlatList, ScrollView } from 'react-native';
 import OrderCard from '../components/card';
+import Theme from '../../theme';
 
 import { useGlobal, setGlobal } from 'reactn';
 
@@ -32,7 +33,11 @@ const Live = ({ navigation }) => {
 		sortedData = sortedTableData;
 	}
 	return (
-		<ScrollView style={{ backgroundColor: '#E2E2E2' }} horizontal={true} showsHorizontalScrollIndicator={false}>
+		<ScrollView
+			style={{ backgroundColor: Theme.primaryBackground }}
+			horizontal={true}
+			showsHorizontalScrollIndicator={false}
+		>
 			<View
 				style={{
 					flex: 1,

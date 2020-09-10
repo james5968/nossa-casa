@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Modal from 'react-native-modal';
 import { activateKeepAwake, deactivateKeepAwake } from 'expo-keep-awake';
-
+import Theme from '../../theme';
 import { Text, View, TouchableOpacity, Button, ToastAndroid } from 'react-native';
 import { Checkbox } from 'react-native-paper';
 import { useGlobal } from 'reactn';
@@ -55,7 +55,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 					style={{
 						width: 400,
 						height: 275,
-						backgroundColor: '#C0C0C0',
+						backgroundColor: Theme.primaryMenu,
 						flexDirection: 'column'
 					}}
 				>
@@ -76,8 +76,8 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 								backgroundColor: 'transparent',
 								justifyContent: 'center',
 								borderBottomWidth: 30,
-								borderBottomColor: '#C0C0C0',
-								borderLeftColor: '#CF0A24',
+								borderBottomColor: Theme.primaryMenu,
+								borderLeftColor: Theme.primaryRed,
 								borderLeftWidth: 400
 							}}
 						/>
@@ -104,7 +104,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 					>
 						<Text
 							style={{
-								color: '#333',
+								color: Theme.secondaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -114,7 +114,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 						>
 							Group Orders (WIP)
 						</Text>
-						<Checkbox color="#CF0A24" status={global.groupOrders ? 'checked' : 'unchecked'} />
+						<Checkbox color={Theme.primaryRed} status={global.groupOrders ? 'checked' : 'unchecked'} />
 					</TouchableOpacity>
 					<TouchableOpacity
 						onPress={toggleOrderRef}
@@ -127,7 +127,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 					>
 						<Text
 							style={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -136,7 +136,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 						>
 							Display Order Ref
 						</Text>
-						<Checkbox color="#CF0A24" status={global.orderRef ? 'checked' : 'unchecked'} />
+						<Checkbox color={Theme.primaryRed} status={global.orderRef ? 'checked' : 'unchecked'} />
 					</TouchableOpacity>
 					<TouchableOpacity
 						onPress={toggleKeepAwake}
@@ -149,7 +149,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 					>
 						<Text
 							style={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -158,7 +158,7 @@ const SettingsMenu = ({ isModalVisible, closeModal }) => {
 						>
 							Keep Screen Awake
 						</Text>
-						<Checkbox color="#CF0A24" status={global.keepAwake ? 'checked' : 'unchecked'} />
+						<Checkbox color={Theme.primaryRed} status={global.keepAwake ? 'checked' : 'unchecked'} />
 					</TouchableOpacity>
 				</View>
 			</Modal>

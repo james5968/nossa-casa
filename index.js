@@ -56,7 +56,10 @@ setGlobal({
 		{ id: 34, item: 'Peri-Salted Chips', inStock: true },
 		{ id: 35, item: 'Macho Peas', inStock: true },
 		{ id: 36, item: 'Perinase', inStock: true }
-	]
+	],
+	theme: {
+		primaryRed: '#CF0A24'
+	}
 });
 
 registerRootComponent(App);

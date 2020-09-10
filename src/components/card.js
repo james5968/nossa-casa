@@ -4,6 +4,8 @@ import TimeAgo from 'react-native-timeago';
 import { useGlobal } from 'reactn';
 import firebase from 'firebase';
 import Modal from 'react-native-modal';
+import Theme from '../../theme';
+import theme from '../../theme';
 
 const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigation, kitchenOrder }) => {
 	const [
@@ -28,17 +30,17 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 	} else if (orders == 6 || name.length == 9) {
 		topColor = '#85471C';
 	} else if (name) {
-		topColor = '#333';
+		topColor = Theme.secondaryDark;
 	}
 
 	let bgColor;
 	let textColor;
 	if (completed) {
-		bgColor = '#fff';
-		textColor = '#333333';
+		bgColor = Theme.primaryLight;
+		textColor = Theme.secondaryDark;
 	} else {
-		bgColor = '#333333';
-		textColor = '#fff';
+		bgColor = Theme.secondaryDark;
+		textColor = Theme.primaryLight;
 	}
 
 	const markCompleted = () => {
@@ -86,7 +88,7 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 						justifyContent: 'space-between',
 						width: 500,
 						height: 500,
-						backgroundColor: '#C0C0C0'
+						backgroundColor: Theme.primaryMenu
 					}}
 				>
 					<Text
@@ -95,8 +97,8 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 							fontSize: 30,
 							textAlign: 'center',
 							paddingVertical: 10,
-							backgroundColor: '#CF0A24',
-							color: '#fff'
+							backgroundColor: theme.primaryRed,
+							color: Theme.primaryLight
 						}}
 					>
 						Do you want to mark the order as completed?
@@ -117,7 +119,7 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 								fontSize: 30,
 								textAlign: 'center',
 
-								color: '#fff'
+								color: Theme.primaryLight
 							}}
 						>
 							Mark Completed
@@ -141,7 +143,7 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 								fontSize: 30,
 								textAlign: 'center',
 
-								color: '#fff'
+								color: Theme.primaryLight
 							}}
 						>
 							No not yet!
@@ -180,7 +182,7 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 						{global.orderRef && (
 							<Text
 								style={{
-									color: '#fff',
+									color: Theme.primaryLight,
 									fontSize: 18,
 									backgroundColor: 'rgba(0,0,0,0.1)',
 									textAlign: 'right',

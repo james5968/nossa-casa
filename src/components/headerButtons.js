@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import SortByMenu from '../components/sortBy';
 import SettingsMenu from '../components/settings';
@@ -7,6 +7,8 @@ import Clock from '../components/digitalClock';
 import { useGlobal } from 'reactn';
 import Spinner from 'react-native-loading-spinner-overlay';
 import { BallIndicator } from 'react-native-indicators';
+
+import Theme from '../../theme';
 
 const styles = StyleSheet.create({
 	container: {
@@ -97,48 +99,48 @@ const HeaderButtons = () => {
 				overlayColor="rgba(200,200,200,0.4)"
 				size="large"
 				textStyle={{
-					color: '#CF0A24',
+					color: Theme.primaryRed,
 					fontSize: 35,
 					fontFamily: 'DIN-Next',
 					marginTop: 200
 				}}
 				visible={global.refresh}
 				textContent={'LOADING'}
-				customIndicator={<BallIndicator color="#CF0A24" size={180} />}
+				customIndicator={<BallIndicator color={Theme.primaryRed} size={180} />}
 			/>
 			<View style={styles.iconContainer}>
 				<TouchableOpacity
 					style={{
-						backgroundColor: isSettingVisible ? '#CF0A24' : '#C0C0C0',
+						backgroundColor: isSettingVisible ? Theme.primaryRed : Theme.primaryMenu,
 						width: 100,
 						margin: 0,
 						paddingVertical: 8
 					}}
 					onPress={toggleSetting}
 				>
-					<Icon size={45} color={isSettingVisible ? '#C0C0C0' : '#CF0A24'} name="settings" />
+					<Icon size={45} color={isSettingVisible ? Theme.primaryMenu : Theme.primaryRed} name="settings" />
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={{
-						backgroundColor: isFilterVisible ? '#CF0A24' : '#C0C0C0',
+						backgroundColor: isFilterVisible ? Theme.primaryRed : Theme.primaryMenu,
 						width: 100,
 						margin: 0,
 						paddingVertical: 8
 					}}
 					onPress={toggleFilter}
 				>
-					<Icon size={48} color={isFilterVisible ? '#C0C0C0' : '#CF0A24'} name="filter-list" />
+					<Icon size={48} color={isFilterVisible ? Theme.primaryMenu : Theme.primaryRed} name="filter-list" />
 				</TouchableOpacity>
 				<TouchableOpacity
 					style={{
-						backgroundColor: isRefreshVisible ? '#CF0A24' : '#C0C0C0',
+						backgroundColor: isRefreshVisible ? Theme.primaryRed : Theme.primaryMenu,
 						width: 100,
 						margin: 0,
 						paddingVertical: 8
 					}}
 					onPress={toggleRefresh}
 				>
-					<Icon size={45} color={isRefreshVisible ? '#C0C0C0' : '#CF0A24'} name="refresh" />
+					<Icon size={45} color={isRefreshVisible ? Theme.primaryMenu : Theme.primaryRed} name="refresh" />
 				</TouchableOpacity>
 				<Clock />
 			</View>

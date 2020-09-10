@@ -53,7 +53,13 @@ const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 3
 
 	return (
 		<View
-			style={{ backgroundColor: '#fff', marginHorizontal: 10, marginVertical: 5, width: width, height: height }}
+			style={{
+				backgroundColor: Theme.primaryLight,
+				marginHorizontal: 10,
+				marginVertical: 5,
+				width: width,
+				height: height
+			}}
 		>
 			<View
 				style={{
@@ -61,7 +67,7 @@ const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 3
 					backgroundColor: color,
 					height: 60,
 					borderBottomWidth: 30,
-					borderBottomColor: '#fff',
+					borderBottomColor: Theme.primaryLight,
 					borderLeftColor: color,
 					borderLeftWidth: width,
 					zIndex: 2
@@ -69,7 +75,7 @@ const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 3
 			/>
 			<Text
 				style={{
-					color: '#fff',
+					color: Theme.primaryLight,
 					textShadowRadius: 4,
 					zIndex: 2,
 					fontFamily: 'DIN-Next',

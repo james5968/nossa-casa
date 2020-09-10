@@ -6,6 +6,7 @@ import { Icon } from 'react-native-elements';
 import Pin from 'react-native-pin-code';
 import Modal from 'react-native-modal';
 import uid from 'uid';
+import Theme from '../../theme';
 
 const Stock = ({ navigation }) => {
 	const [
@@ -68,12 +69,12 @@ const Stock = ({ navigation }) => {
 						fontFamily: 'DIN-Next',
 						fontSize: 30
 					}}
-					containerStyle={{ height: 250, backgroundColor: '#333' }}
-					containerPinStyle={{ height: 100, color: '#CF0A24' }}
+					containerStyle={{ height: 250, backgroundColor: Theme.secondaryDark }}
+					containerPinStyle={{ height: 100, color: Theme.primaryRed }}
 					pinStyle={{ height: 100, backgroundColor: '#ccc' }}
 					keyboardType="numeric"
 					textStyle={{
-						color: '#fff',
+						color: Theme.primaryLight,
 						fontFamily: 'DIN-Next',
 						fontSize: 25
 					}}
@@ -81,7 +82,7 @@ const Stock = ({ navigation }) => {
 					obfuscation
 					number={6}
 					code="152667"
-					selectionColor="#CF0A24"
+					selectionColor={Theme.primaryRed}
 					success={() => {
 						setModalVisible(false);
 						setGlobal((state) => ({
@@ -96,7 +97,7 @@ const Stock = ({ navigation }) => {
 				/>
 				<TouchableOpacity
 					style={{
-						backgroundColor: '#CF0A24',
+						backgroundColor: Theme.primaryRed,
 						width: 700,
 						height: 80,
 						justifyContent: 'center',
@@ -109,7 +110,7 @@ const Stock = ({ navigation }) => {
 				>
 					<Text
 						style={{
-							color: '#fff',
+							color: Theme.primaryLight,
 							fontFamily: 'DIN-Next',
 							fontSize: 30
 						}}
@@ -125,13 +126,13 @@ const Stock = ({ navigation }) => {
 					flexDirection: 'row',
 					justifyContent: 'space-between',
 					alignItems: 'center',
-					backgroundColor: '#C0C0C0'
+					backgroundColor: Theme.primaryMenu
 				}}
 			>
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
 					<TouchableOpacity
 						style={{
-							backgroundColor: global.stockSortBy == 'all' ? '#CF0A24' : '#333',
+							backgroundColor: global.stockSortBy == 'all' ? Theme.primaryRed : Theme.secondaryDark,
 							height: 50,
 							width: 100,
 							justifyContent: 'center'
@@ -142,7 +143,7 @@ const Stock = ({ navigation }) => {
 							style={{
 								fontFamily: 'DIN-Next',
 								fontSize: 25,
-								color: '#fff',
+								color: Theme.primaryLight,
 								textAlign: 'center'
 							}}
 						>
@@ -152,7 +153,7 @@ const Stock = ({ navigation }) => {
 					<TouchableOpacity
 						style={{
 							marginLeft: 5,
-							backgroundColor: global.stockSortBy == 'stock' ? '#CF0A24' : '#333',
+							backgroundColor: global.stockSortBy == 'stock' ? Theme.primaryRed : Theme.secondaryDark,
 							height: 50,
 							width: 100,
 							justifyContent: 'center'
@@ -163,7 +164,7 @@ const Stock = ({ navigation }) => {
 							style={{
 								fontFamily: 'DIN-Next',
 								fontSize: 25,
-								color: '#fff',
+								color: Theme.primaryLight,
 								textAlign: 'center'
 							}}
 						>
@@ -173,7 +174,7 @@ const Stock = ({ navigation }) => {
 					<TouchableOpacity
 						style={{
 							marginLeft: 5,
-							backgroundColor: global.stockSortBy == 'nostock' ? '#CF0A24' : '#333',
+							backgroundColor: global.stockSortBy == 'nostock' ? Theme.primaryRed : Theme.secondaryDark,
 							height: 50,
 							width: 100,
 							justifyContent: 'center'
@@ -184,7 +185,7 @@ const Stock = ({ navigation }) => {
 							style={{
 								fontFamily: 'DIN-Next',
 								fontSize: 20,
-								color: '#fff',
+								color: Theme.primaryLight,
 								textAlign: 'center'
 							}}
 						>
@@ -195,7 +196,7 @@ const Stock = ({ navigation }) => {
 				<View style={{ flexDirection: 'row', alignItems: 'center' }}>
 					<TouchableOpacity
 						onPress={toggleModal}
-						style={{ marginLeft: 50, backgroundColor: '#CF0A24', height: 50, width: 100 }}
+						style={{ marginLeft: 50, backgroundColor: Theme.primaryRed, height: 50, width: 100 }}
 					>
 						<Icon
 							style={{ marginTop: 10 }}
@@ -207,7 +208,7 @@ const Stock = ({ navigation }) => {
 				</View>
 			</View>
 
-			<ScrollView style={{ flex: 1, backgroundColor: '#E2E2E2' }}>
+			<ScrollView style={{ flex: 1, backgroundColor: Theme.primaryBackground }}>
 				{stockArray.map((item) => (
 					<StockItem index={item.id} key={item.id} item={item.item} inStock={item.inStock} />
 				))}

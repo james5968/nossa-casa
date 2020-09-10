@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ToastAndroid } from 'react-native';
 import { useGlobal } from 'reactn';
+import Theme from '../../theme';
 const stockItem = ({ item, inStock, index }) => {
 	const [
 		global,
@@ -26,7 +27,7 @@ const stockItem = ({ item, inStock, index }) => {
 	return (
 		<TouchableOpacity
 			style={{
-				backgroundColor: inStock ? '#fff' : '#333',
+				backgroundColor: inStock ? Theme.primaryLight : '#333',
 				height: 80,
 				flexDirection: 'row',
 				justifyContent: 'space-between',
@@ -38,7 +39,7 @@ const stockItem = ({ item, inStock, index }) => {
 		>
 			<Text
 				style={{
-					color: inStock ? '#000' : '#fff',
+					color: inStock ? Theme.primaryDark : Theme.primaryLight,
 					fontSize: 25,
 					fontFamily: 'DIN-Next'
 				}}
@@ -47,7 +48,7 @@ const stockItem = ({ item, inStock, index }) => {
 			</Text>
 			<View
 				style={{
-					backgroundColor: inStock ? '#97C31E' : '#CF0A24',
+					backgroundColor: inStock ? '#97C31E' : Theme.primaryRed,
 					height: 80,
 					width: 150,
 					alignItems: 'center',
@@ -56,7 +57,7 @@ const stockItem = ({ item, inStock, index }) => {
 			>
 				<Text
 					style={{
-						color: inStock ? '#000' : '#fff',
+						color: inStock ? Theme.primaryDark : Theme.primaryLight,
 						fontSize: 25,
 						fontFamily: 'DIN-Next'
 					}}

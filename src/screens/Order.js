@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { Button, Text, View, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import OrderPart from '../components/orderPart';
+import { useGlobal } from 'reactn';
+import Theme from '../../theme';
 
 const Stock = ({ navigation, route }) => {
+	const [
+		global,
+		setGlobal
+	] = useGlobal();
+
 	const { id } = route.params;
 	const { tableNo } = route.params;
 	const { name } = route.params;
@@ -32,7 +39,7 @@ const Stock = ({ navigation, route }) => {
 	};
 
 	return (
-		<View style={{ flex: 1, backgroundColor: '#E2E2E2', flexWrap: 'wrap', alignItems: 'flex-end' }}>
+		<View style={{ flex: 1, backgroundColor: Theme.primaryBackground, flexWrap: 'wrap', alignItems: 'flex-end' }}>
 			<OrderPart title="Drinks" color="#85471C" height={210} orderText="drink" />
 			<OrderPart title="Extras" color="#074F87" height={210} orderText="extras" />
 			<OrderPart title="Desserts" color="#97C31E" height={210} orderText="dessert" />
@@ -51,7 +58,7 @@ const Stock = ({ navigation, route }) => {
 				>
 					<Text
 						style={{
-							color: isCompleted ? '#fff' : '#000',
+							color: isCompleted ? Theme.primaryLight : Theme.primaryDark,
 							fontFamily: 'DIN-Next',
 							fontSize: 30
 						}}
@@ -61,7 +68,7 @@ const Stock = ({ navigation, route }) => {
 				</TouchableOpacity>
 				<View
 					style={{
-						backgroundColor: '#CF0A24',
+						backgroundColor: Theme.primaryRed,
 						width: 250,
 						height: 65,
 						flexDirection: 'row',
@@ -72,7 +79,7 @@ const Stock = ({ navigation, route }) => {
 				>
 					<Text
 						style={{
-							color: '#fff',
+							color: Theme.primaryLight,
 							fontFamily: 'DIN-Next',
 							fontSize: 35
 						}}

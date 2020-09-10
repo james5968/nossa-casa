@@ -3,6 +3,7 @@ import Modal from 'react-native-modal';
 import { Text, View, TextInput } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 import { useGlobal } from 'reactn';
+import Theme from '../../theme';
 
 const sortByMenu = ({ isModalVisible, closeModal }) => {
 	const [
@@ -43,7 +44,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 				animationIn="fadeIn"
 				animationOut="fadeOut"
 			>
-				<View style={{ width: 380, height: 500, backgroundColor: '#C0C0C0', flexDirection: 'column' }}>
+				<View style={{ width: 380, height: 500, backgroundColor: Theme.primaryMenu, flexDirection: 'column' }}>
 					<View
 						style={{
 							width: 380,
@@ -61,8 +62,8 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 								backgroundColor: 'transparent',
 								justifyContent: 'center',
 								borderBottomWidth: 30,
-								borderBottomColor: '#C0C0C0',
-								borderLeftColor: '#CF0A24',
+								borderBottomColor: Theme.primaryMenu,
+								borderLeftColor: Theme.primaryRed,
 								borderLeftWidth: 380
 							}}
 						/>
@@ -80,9 +81,9 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 					</View>
 					<RadioButton.Group onValueChange={sortByHandler} value={global.sort}>
 						<RadioButton.Item
-							color="#CF0A24"
+							color={Theme.primaryRed}
 							labelStyle={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -92,9 +93,9 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 							value="old"
 						/>
 						<RadioButton.Item
-							color="#CF0A24"
+							color={Theme.primaryRed}
 							labelStyle={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -104,9 +105,9 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 							value="new"
 						/>
 						<RadioButton.Item
-							color="#CF0A24"
+							color={Theme.primaryRed}
 							labelStyle={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 
@@ -118,7 +119,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 						/>
 					</RadioButton.Group>
 
-					<View style={{ backgroundColor: '#CF0A24' }}>
+					<View style={{ backgroundColor: Theme.primaryRed }}>
 						<Text
 							style={{
 								color: '#E2E2E2',
@@ -133,9 +134,9 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 					</View>
 					<RadioButton.Group onValueChange={tableHandler} value={global.table}>
 						<RadioButton.Item
-							color="#CF0A24"
+							color={Theme.primaryRed}
 							labelStyle={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -145,9 +146,9 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 							value="all"
 						/>
 						<RadioButton.Item
-							color="#CF0A24"
+							color={Theme.primaryRed}
 							labelStyle={{
-								color: '#000',
+								color: Theme.primaryDark,
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginBottom: 10,
@@ -160,7 +161,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 					<View style={{ flexDirection: 'row' }}>
 						<Text
 							style={{
-								color: global.table == 'range' ? '#000' : '#888',
+								color: global.table == 'range' ? Theme.primaryDark : '#888',
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 								marginLeft: 15,
@@ -173,7 +174,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 							editable={global.table == 'range'}
 							keyboardType="numeric"
 							textAlign="center"
-							underlineColorAndroid={global.table == 'range' ? '#CF0A24' : '#888'}
+							underlineColorAndroid={global.table == 'range' ? Theme.primaryRed : '#888'}
 							style={{
 								height: 40,
 								width: 50,
@@ -183,14 +184,14 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 								marginHorizontal: 25,
 								fontFamily: 'DIN-Next',
 								fontSize: 25,
-								color: global.table == 'range' ? '#000' : '#888'
+								color: global.table == 'range' ? Theme.primaryDark : '#888'
 							}}
 							onChangeText={fromHandler}
 							value={global.from}
 						/>
 						<Text
 							style={{
-								color: global.table == 'range' ? '#000' : '#888',
+								color: global.table == 'range' ? Theme.primaryDark : '#888',
 								fontSize: 25,
 								fontFamily: 'DIN-Next',
 
@@ -203,7 +204,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 							keyboardType="numeric"
 							textAlign="center"
 							editable={global.table == 'range'}
-							underlineColorAndroid={global.table == 'range' ? '#CF0A24' : '#888'}
+							underlineColorAndroid={global.table == 'range' ? Theme.primaryRed : '#888'}
 							style={{
 								height: 40,
 								width: 50,
@@ -213,7 +214,7 @@ const sortByMenu = ({ isModalVisible, closeModal }) => {
 								marginHorizontal: 25,
 								fontFamily: 'DIN-Next',
 								fontSize: 25,
-								color: global.table == 'range' ? '#000' : '#888'
+								color: global.table == 'range' ? Theme.primaryDark : '#888'
 							}}
 							onChangeText={toHandler}
 							value={global.to}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useGlobal } from 'reactn';
 import { View, ScrollView } from 'react-native';
 import OrderCard from '../components/card';
+import Theme from '../../theme';
 
 const Live = ({ navigation }) => {
 	const [
@@ -30,13 +31,17 @@ const Live = ({ navigation }) => {
 		sortedData = sortedTableData;
 	}
 	return (
-		<ScrollView style={{ backgroundColor: '#E2E2E2' }} horizontal={true} showsHorizontalScrollIndicator={false}>
+		<ScrollView
+			style={{ backgroundColor: Theme.primaryBackground }}
+			horizontal={true}
+			showsHorizontalScrollIndicator={false}
+		>
 			<View
 				style={{
 					flex: 1,
 					flexDirection: 'column',
 					flexWrap: 'wrap',
-					backgroundColor: '#E2E2E2',
+					backgroundColor: Theme.primaryBackground,
 					paddingTop: 20,
 					paddingBottom: 20,
 					paddingLeft: 10

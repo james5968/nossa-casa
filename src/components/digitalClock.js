@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { AppRegistry, View, Text, StyleSheet, Platform } from 'react-native';
-
+import Theme from '../../theme';
 export default class App extends Component {
 	constructor() {
 		super();
@@ -60,6 +60,6 @@ const styles = StyleSheet.create({
 	timeText: {
 		fontFamily: 'DIN-Next',
 		fontSize: 33,
-		color: '#CF0A24'
+		color: Theme.primaryRed
 	}
 });

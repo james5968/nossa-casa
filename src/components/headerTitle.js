@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { useGlobal } from 'reactn';
+import Theme from '../../theme';
 
 const HeaderTitle = () => {
 	const [
@@ -27,10 +28,10 @@ const HeaderTitle = () => {
 			<View style={{ flexDirection: 'row' }}>
 				<Text
 					style={{
-						color: '#fff',
+						color: Theme.primaryLight,
 						fontFamily: 'DIN-Next',
 						fontSize: 40,
-						backgroundColor: '#CF0A24',
+						backgroundColor: Theme.primaryRed,
 						width: 250,
 						padding: 10,
 						textAlign: 'center',
@@ -42,10 +43,10 @@ const HeaderTitle = () => {
 			</View>
 			<TextInput
 				selectTextOnFocus
-				selectionColor="#CF0A24"
+				selectionColor={Theme.primaryRed}
 				keyboardType="default"
 				textAlign="right"
-				underlineColorAndroid="#CF0A24"
+				underlineColorAndroid={Theme.primaryRed}
 				onChangeText={onSearchText}
 				value={global.search}
 				style={{
@@ -56,7 +57,7 @@ const HeaderTitle = () => {
 					alignSelf: 'flex-end',
 					fontFamily: 'DIN-Next',
 					fontSize: 25,
-					color: '#CF0A24',
+					color: Theme.primaryRed,
 
 					paddingRight: 10,
 					textDecorationLine: 'none',
@@ -64,7 +65,12 @@ const HeaderTitle = () => {
 				}}
 			/>
 			<TouchableOpacity onPress={clearSearch}>
-				<Icon style={{ marginTop: 10 }} size={45} color="#CF0A24" name={global.search ? 'close' : 'search'} />
+				<Icon
+					style={{ marginTop: 10 }}
+					size={45}
+					color={Theme.primaryRed}
+					name={global.search ? 'close' : 'search'}
+				/>
 			</TouchableOpacity>
 		</View>
 	);
