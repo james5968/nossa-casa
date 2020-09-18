@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { Button, Text, View, TouchableOpacity } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import firebase from 'firebase';
 import OrderPart from '../components/orderPart';
 import { useGlobal } from 'reactn';
 import Theme from '../../theme';
+import NossaButton from '../components/shared/button';
 
 const Stock = ({ navigation, route }) => {
 	const [
@@ -16,7 +17,6 @@ const Stock = ({ navigation, route }) => {
 	const { name } = route.params;
 	const { kitchenOrder } = route.params;
 	const { completed } = route.params;
-	const { timeWaited } = route.params;
 
 	const [
 		isCompleted,

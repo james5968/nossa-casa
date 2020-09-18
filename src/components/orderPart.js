@@ -3,6 +3,7 @@ import { Text, View, ScrollView, FlatList } from 'react-native';
 import uid from 'uid';
 import ScrollViewIndicator from 'react-native-scroll-indicator';
 
+import Theme from '../../theme.js';
 const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 300, orderText = 'drink' }) => {
 	let orderDetails;
 	if (orderText == 'drink') {

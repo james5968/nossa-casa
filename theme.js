@@ -8,12 +8,12 @@
 //primaryMenu #E2E2E2
 
 const theme = {
-	primaryRed: '#D38A43',
-	primaryDark: '#fff',
-	primaryMenu: '#111',
-	primaryLight: '#000',
-	secondaryDark: '#999',
-	primaryBackground: '#393939'
+	primaryRed: '#CF0A24',
+	primaryDark: '#000',
+	primaryMenu: '#C0C0C0',
+	primaryLight: '#fff',
+	secondaryDark: '#333',
+	primaryBackground: '#E2E2E2'
 };
 
 export default theme;

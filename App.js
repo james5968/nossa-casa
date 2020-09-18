@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -20,7 +20,8 @@ import Stock from './src/screens/Stock';
 import Order from './src/screens/Order';
 import HeaderButtons from './src/components/headerButtons';
 import HeaderTitle from './src/components/headerTitle';
-import theme from './theme';
+
+import Button from './src/components/shared/button';
 
 const HomeStack = createStackNavigator();
 
@@ -101,6 +102,12 @@ const OrderRight = ({ route, navigation }) => {
 							}));
 						}, 50000);
 					}}
+				/>
+				<Button
+					textValue="Close"
+					backgroundColor={Theme.primaryRed}
+					textColour={Theme.primaryLight}
+					fontSize={30}
 				/>
 				<TouchableOpacity
 					style={{
