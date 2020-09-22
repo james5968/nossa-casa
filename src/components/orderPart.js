@@ -2,53 +2,35 @@ import React from 'react';
 import { Text, View, ScrollView, FlatList } from 'react-native';
 import uid from 'uid';
 import ScrollViewIndicator from 'react-native-scroll-indicator';
+import OrderItem from './orderItem';
 
 import Theme from '../../theme.js';
-const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 300, orderText = 'drink' }) => {
-	let orderDetails;
-	if (orderText == 'drink') {
-		orderDetails = [
-			'1 x Bottomless Soft Drink - Coke Zero',
-			'1 x Bottomless Soft Drink - Fanta',
-			'2 x Sagres',
-			'4 x Chilled Water'
-		];
-	} else if (orderText == 'extras') {
-		orderDetails = [
-			'2 x Halloumi Sticks and Dip',
-			'1 x Spicy Mixed Olives'
-		];
-	} else if (orderText == 'dessert') {
-		orderDetails = [
-			'1 x Naughty Nata'
-		];
-	} else if (orderText == 'main') {
-		orderDetails = [
-			'1 x 1/2 Chicken',
-			'       Medium',
-			'       2 Sides',
-			'           Regular Spicy Rice',
-			'           Regular Long Steam Brocolli',
-			'',
-			'2 x Chicken Wrap',
-			'       Lemon & Herb',
-			'       1 Side',
-			'           Regular Peri-Salted Chips',
-			'',
-			'1 x Butterfly Breast',
-			'       Extra Hot',
-			'       2 Sides',
-			'           Regular Garlic Bread',
-			'           Regular Creamy Mash',
-			'',
-			'1 x Wing Roulette'
-		];
-	}
+const orderPart = ({
+	orderObject,
+	title = 'Title',
+	color = '#FECD42',
+	width = 620,
+	height = 300,
+	orderText = 'drink'
+}) => {
 	const renderItem = (item) => {
+		let sideOne, sideTwo;
+
+		if (typeof item.modifiers != 'undefined' && typeof item.modifiers.sides != 'undefined') {
+			sideOne = item.modifiers.sides[0];
+			sideTwo = item.modifiers.sides[1];
+		}
+
 		return (
-			<Text key={uid()} style={{ marginLeft: 50, fontFamily: 'DIN-Next', fontSize: 25 }}>
-				{item}
-			</Text>
+			<OrderItem
+				item={item.item}
+				spice={item.spice}
+				price={item.price}
+				qty={item.qty}
+				sideOne={sideOne}
+				sideTwo={sideTwo}
+				type={item.type}
+			/>
 		);
 	};
 
@@ -88,7 +70,7 @@ const orderPart = ({ title = 'Title', color = '#FECD42', width = 620, height = 3
 			</Text>
 			<View style={{ zIndex: 1, flex: 1, marginTop: 15, marginLeft: 10, marginTop: -10 }}>
 				<ScrollView persistentScrollbar={true}>
-					<View style={{ paddingVertical: 30 }}>{orderDetails.map((item) => renderItem(item))}</View>
+					<View style={{ paddingVertical: 30 }}>{orderObject.map((item) => renderItem(item))}</View>
 				</ScrollView>
 			</View>
 		</View>

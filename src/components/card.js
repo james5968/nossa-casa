@@ -76,7 +76,7 @@ const OrderCard = ({ tableNo, orders, timeWaited, completed, name, id, navigatio
 					name: name,
 					id: id,
 					kitchenOrder: kitchenOrder,
-					total: 47.7,
+
 					completed: completed,
 					timeWaited: timeWaited
 				})}

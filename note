@@ -1,0 +1,12 @@
+let renderItem = (item) => {
+		return (
+			<OrderItem
+				item={item.item}
+				spice={item.spice}
+				price={item.price}
+				qty={item.qty}
+				sideOne={item.modifiers.side[0]}
+				sideTwo={item.modifiers.side[0]}
+			/>
+		);
+	};

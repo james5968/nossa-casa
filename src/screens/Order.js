@@ -6,6 +6,14 @@ import { useGlobal } from 'reactn';
 import Theme from '../../theme';
 import NossaButton from '../components/shared/button';
 
+Array.prototype.sum = function(prop, prop2) {
+	var total = 0;
+	for (var i = 0, _len = this.length; i < _len; i++) {
+		total += this[i][prop] * this[i][prop2];
+	}
+	return total;
+};
+
 const Stock = ({ navigation, route }) => {
 	const [
 		global,
@@ -17,6 +25,7 @@ const Stock = ({ navigation, route }) => {
 	const { name } = route.params;
 	const { kitchenOrder } = route.params;
 	const { completed } = route.params;
+	const { timeWaited } = route.params;
 
 	const [
 		isCompleted,
@@ -38,12 +47,40 @@ const Stock = ({ navigation, route }) => {
 		navigation.goBack();
 	};
 
+	let convertOrder = Object.values(kitchenOrder);
+
 	return (
 		<View style={{ flex: 1, backgroundColor: Theme.primaryBackground, flexWrap: 'wrap', alignItems: 'flex-end' }}>
-			<OrderPart title="Drinks" color="#85471C" height={210} orderText="drink" />
-			<OrderPart title="Extras" color="#074F87" height={210} orderText="extras" />
-			<OrderPart title="Desserts" color="#97C31E" height={210} orderText="dessert" />
-			<OrderPart title="Mains" color="#ED5250" height={580} orderText="main" />
+			<OrderPart
+				title="Drinks"
+				color="#85471C"
+				height={210}
+				orderText="drink"
+				orderObject={convertOrder.filter((order) => order.type == 'drink')}
+			/>
+			<OrderPart
+				title="Extras"
+				color="#074F87"
+				height={210}
+				orderText="extras"
+				orderObject={convertOrder.filter(
+					(order) => order.type == 'extra' || order.type == 'side' || order.type == 'starter'
+				)}
+			/>
+			<OrderPart
+				title="Desserts"
+				color="#97C31E"
+				height={210}
+				orderText="dessert"
+				orderObject={convertOrder.filter((order) => order.type == 'dessert')}
+			/>
+			<OrderPart
+				title="Mains"
+				color="#ED5250"
+				height={580}
+				orderText="main"
+				orderObject={convertOrder.filter((order) => order.type == 'main')}
+			/>
 			<View style={{ flexDirection: 'row' }}>
 				<TouchableOpacity
 					onPress={handleCompleted}
@@ -84,7 +121,7 @@ const Stock = ({ navigation, route }) => {
 							fontSize: 35
 						}}
 					>
-						Total: £{route.params.total.toFixed(2)}
+						Total: £{kitchenOrder.sum('price', 'qty').toFixed(2)}
 					</Text>
 				</View>
 			</View>

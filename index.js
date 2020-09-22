@@ -2,7 +2,7 @@ import React from 'react';
 import { setGlobal } from 'reactn';
 import { registerRootComponent } from 'expo';
 import App from './App';
-import {} from 'reactn';
+
 import { fireapp } from './src/components/config';
 
 setGlobal({

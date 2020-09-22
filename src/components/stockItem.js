@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, ToastAndroid } from 'react-native';
 import { useGlobal } from 'reactn';
 import Theme from '../../theme';
-const stockItem = ({ item, inStock, index }) => {
+import firebase from 'firebase';
+const stockItem = ({ item, inStock, index, type }) => {
 	const [
 		global,
 		setGlobal
@@ -12,14 +13,14 @@ const stockItem = ({ item, inStock, index }) => {
 
 	const toggleStock = () => {
 		if (global.managerMode) {
-			const elementsIndex = global.stockList.findIndex((element) => element.id == index);
-			let newArray = [
-				...global.stockList
-			];
-			newArray[elementsIndex] = { ...newArray[elementsIndex], inStock: !newArray[elementsIndex].inStock };
-			setGlobal((state) => ({
-				stockList: (state.stockList = newArray)
-			}));
+			firebase.database().ref('stock').update({
+				[index]: {
+					title: item,
+					id: index,
+					inStock: !inStock,
+					type: type
+				}
+			});
 		} else {
 			ToastAndroid.show(toastMessage, ToastAndroid.SHORT);
 		}

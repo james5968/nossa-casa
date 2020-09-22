@@ -29,7 +29,7 @@ const Stock = ({ navigation }) => {
 		setGlobal
 	] = useGlobal();
 
-	let stockArray = global.stockList;
+	let stockArray = Object.values(global.stockList);
 
 	if (global.stockSortBy == 'stock') {
 		stockArray = stockArray.filter((el) => el.inStock == true);
@@ -210,7 +210,13 @@ const Stock = ({ navigation }) => {
 
 			<ScrollView style={{ flex: 1, backgroundColor: Theme.primaryBackground }}>
 				{stockArray.map((item) => (
-					<StockItem index={item.id} key={item.id} item={item.item} inStock={item.inStock} />
+					<StockItem
+						type={item.type}
+						index={item.id}
+						key={item.id}
+						item={item.title}
+						inStock={item.inStock}
+					/>
 				))}
 			</ScrollView>
 		</View>

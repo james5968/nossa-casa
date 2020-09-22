@@ -24,6 +24,13 @@ import HeaderTitle from './src/components/headerTitle';
 import Button from './src/components/shared/button';
 
 const HomeStack = createStackNavigator();
+Array.prototype.sum = function(prop, prop2) {
+	var total = 0;
+	for (var i = 0, _len = this.length; i < _len; i++) {
+		total += this[i][prop] * this[i][prop2];
+	}
+	return total;
+};
 
 const headerOptions = {
 	headerStyle: {
@@ -52,7 +59,7 @@ const OrderRight = ({ route, navigation }) => {
 	const [
 		refundAmount,
 		setRefundAmount
-	] = useState(route.params.total);
+	] = useState(route.params.kitchenOrder.sum('price', 'qty').toFixed(2));
 
 	const toggleModal = () => {
 		if (!global.managerMode) {
@@ -169,7 +176,13 @@ const OrderRight = ({ route, navigation }) => {
 								textAlign: 'center'
 							}}
 							value={refundAmount.toString()}
-							onChangeText={(value) => setRefundAmount(value)}
+							onChangeText={(value) => {
+								if (value <= route.params.kitchenOrder.sum('price', 'qty').toFixed(2)) {
+									setRefundAmount(value);
+								} else {
+									alert("You can't refund more than the order total");
+								}
+							}}
 							keyboardType="number-pad"
 						/>
 						<TouchableOpacity
@@ -357,6 +370,12 @@ export default function App() {
 		const data = snapshot.val() ? snapshot.val() : {};
 		setGlobal((state) => ({
 			orders: (state.orders = data)
+		}));
+	});
+	firebase.database().ref('stock/').on('value', (snapshot) => {
+		const data = snapshot.val() ? snapshot.val() : {};
+		setGlobal((state) => ({
+			stockList: (state.stockList = data)
 		}));
 	});
 
