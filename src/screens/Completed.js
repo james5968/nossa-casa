@@ -43,26 +43,46 @@ const Live = ({ navigation }) => {
 					flex: 1,
 					flexDirection: 'column',
 					flexWrap: 'wrap',
-
+					backgroundColor: Theme.primaryBackground,
 					paddingTop: 20,
 					paddingBottom: 20,
 					paddingLeft: 10
 				}}
 			>
 				{sortedData.map(({ tableNo, completed, name, timeStamp, id, kitchenOrder }) => {
+					let tableNumber = parseInt(tableNo);
+					let fromRange = parseInt(global.from);
+					let toRange = parseInt(global.to);
 					if (completed) {
-						return (
-							<OrderCard
-								key={id}
-								tableNo={tableNo}
-								completed={completed}
-								name={name}
-								timeWaited={timeStamp}
-								navigation={navigation}
-								kitchenOrder={kitchenOrder}
-								id={id}
-							/>
-						);
+						if (global.table == 'range') {
+							if (tableNumber <= toRange && tableNumber >= fromRange) {
+								return (
+									<OrderCard
+										key={id}
+										tableNo={tableNo}
+										completed={completed}
+										name={name}
+										timeWaited={timeStamp}
+										id={id}
+										navigation={navigation}
+										kitchenOrder={kitchenOrder}
+									/>
+								);
+							}
+						} else {
+							return (
+								<OrderCard
+									key={id}
+									tableNo={tableNo}
+									completed={completed}
+									name={name}
+									timeWaited={timeStamp}
+									id={id}
+									navigation={navigation}
+									kitchenOrder={kitchenOrder}
+								/>
+							);
+						}
 					}
 				})}
 			</View>

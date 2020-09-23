@@ -27,7 +27,7 @@ const Live = ({ navigation }) => {
 
 		sortedData = sortedNewData;
 	} else if (sortBy == 'table') {
-		const sortedTableData = arrayData.sort((a, b) => (a.tableNo > b.tableNo ? 1 : -1));
+		const sortedTableData = arrayData.sort((a, b) => (parseInt(a.tableNo) > parseInt(b.tableNo) ? 1 : -1));
 		sortedData = sortedTableData;
 	}
 	return (

@@ -13,7 +13,7 @@ const orderPart = ({
 	height = 300,
 	orderText = 'drink'
 }) => {
-	const renderItem = (item) => {
+	const renderItem = (item, index) => {
 		let sideOne, sideTwo;
 
 		if (typeof item.modifiers != 'undefined' && typeof item.modifiers.sides != 'undefined') {
@@ -23,6 +23,7 @@ const orderPart = ({
 
 		return (
 			<OrderItem
+				key={index}
 				item={item.item}
 				spice={item.spice}
 				price={item.price}
@@ -70,7 +71,9 @@ const orderPart = ({
 			</Text>
 			<View style={{ zIndex: 1, flex: 1, marginTop: 15, marginLeft: 10, marginTop: -10 }}>
 				<ScrollView persistentScrollbar={true}>
-					<View style={{ paddingVertical: 30 }}>{orderObject.map((item) => renderItem(item))}</View>
+					<View style={{ paddingVertical: 30 }}>
+						{orderObject.map((item, index) => renderItem(item, index))}
+					</View>
 				</ScrollView>
 			</View>
 		</View>
